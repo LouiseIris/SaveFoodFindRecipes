@@ -9,7 +9,7 @@ The app is meant for people who can't think of a recipe for their ingredients an
   
 ## Solution  
 This app will let the user fill in the ingredients they have at home and then they will get several recipes they can make with that.  
-<img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/doc/schets.jpg width="1000">  
+<img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/schets.jpg width="1000">  
   
 list of main features:  
 * login MVP  

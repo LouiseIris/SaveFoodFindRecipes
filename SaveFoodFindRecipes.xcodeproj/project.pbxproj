@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		A61F1EB220078217003BB85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EB120078217003BB85B /* AppDelegate.swift */; };
-		A61F1EB420078217003BB85B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EB320078217003BB85B /* ViewController.swift */; };
+		A61F1EB420078217003BB85B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EB320078217003BB85B /* LogInViewController.swift */; };
 		A61F1EB720078217003BB85B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61F1EB520078217003BB85B /* Main.storyboard */; };
 		A61F1EB920078217003BB85B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61F1EB820078217003BB85B /* Assets.xcassets */; };
 		A61F1EBC20078217003BB85B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61F1EBA20078217003BB85B /* LaunchScreen.storyboard */; };
+		A61F1EC420079BD4003BB85B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC320079BD4003BB85B /* HomeViewController.swift */; };
+		A61F1EC620079CDA003BB85B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC520079CDA003BB85B /* SearchViewController.swift */; };
+		A61F1EC820079D8F003BB85B /* SavedRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */; };
+		A61F1ECA20079DC8003BB85B /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */; };
+		A61F1ECC20079F64003BB85B /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */; };
+		A61F1ECE20079F88003BB85B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECD20079F88003BB85B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A61F1EAE20078217003BB85B /* SaveFoodFindRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveFoodFindRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61F1EB120078217003BB85B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A61F1EB320078217003BB85B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A61F1EB320078217003BB85B /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A61F1EB620078217003BB85B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A61F1EB820078217003BB85B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A61F1EBB20078217003BB85B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A61F1EBD20078217003BB85B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A61F1EC320079BD4003BB85B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A61F1EC520079CDA003BB85B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
+		A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
+		A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		A61F1ECD20079F88003BB85B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +67,14 @@
 			isa = PBXGroup;
 			children = (
 				A61F1EB120078217003BB85B /* AppDelegate.swift */,
-				A61F1EB320078217003BB85B /* ViewController.swift */,
+				A61F1EB320078217003BB85B /* LogInViewController.swift */,
 				A61F1EB520078217003BB85B /* Main.storyboard */,
+				A61F1ECD20079F88003BB85B /* DetailViewController.swift */,
+				A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */,
+				A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */,
+				A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */,
+				A61F1EC520079CDA003BB85B /* SearchViewController.swift */,
+				A61F1EC320079BD4003BB85B /* HomeViewController.swift */,
 				A61F1EB820078217003BB85B /* Assets.xcassets */,
 				A61F1EBA20078217003BB85B /* LaunchScreen.storyboard */,
 				A61F1EBD20078217003BB85B /* Info.plist */,
@@ -136,8 +154,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61F1EB420078217003BB85B /* ViewController.swift in Sources */,
+				A61F1EB420078217003BB85B /* LogInViewController.swift in Sources */,
+				A61F1ECC20079F64003BB85B /* ResultsTableViewController.swift in Sources */,
+				A61F1ECA20079DC8003BB85B /* GroceryListTableViewController.swift in Sources */,
 				A61F1EB220078217003BB85B /* AppDelegate.swift in Sources */,
+				A61F1EC620079CDA003BB85B /* SearchViewController.swift in Sources */,
+				A61F1EC820079D8F003BB85B /* SavedRecipesTableViewController.swift in Sources */,
+				A61F1EC420079BD4003BB85B /* HomeViewController.swift in Sources */,
+				A61F1ECE20079F88003BB85B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

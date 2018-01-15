@@ -1,0 +1,6 @@
+framework module Pods_SaveFoodFindRecipes {
+  umbrella header "Pods-SaveFoodFindRecipes-umbrella.h"
+
+  export *
+  module * { export * }
+}

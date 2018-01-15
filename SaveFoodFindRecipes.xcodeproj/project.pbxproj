@@ -18,9 +18,14 @@
 		A61F1ECA20079DC8003BB85B /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */; };
 		A61F1ECC20079F64003BB85B /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */; };
 		A61F1ECE20079F88003BB85B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECD20079F88003BB85B /* DetailViewController.swift */; };
+		A6687491200BAC6900365010 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6687490200BAC6900365010 /* RecipeData.swift */; };
+		F29DA09B54758B0CEEA3D9D1 /* Pods_SaveFoodFindRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A35475439A9FE77F313664 /* Pods_SaveFoodFindRecipes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56A35475439A9FE77F313664 /* Pods_SaveFoodFindRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveFoodFindRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671D06AD0301083F9848E205 /* Pods-SaveFoodFindRecipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveFoodFindRecipes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes.debug.xcconfig"; sourceTree = "<group>"; };
+		9C8970B96E74A6DD11A6C520 /* Pods-SaveFoodFindRecipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveFoodFindRecipes.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes.release.xcconfig"; sourceTree = "<group>"; };
 		A61F1EAE20078217003BB85B /* SaveFoodFindRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveFoodFindRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61F1EB120078217003BB85B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A61F1EB320078217003BB85B /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 		A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		A61F1ECD20079F88003BB85B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A6687490200BAC6900365010 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29DA09B54758B0CEEA3D9D1 /* Pods_SaveFoodFindRecipes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EFFE8012A605B220DD2C5F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56A35475439A9FE77F313664 /* Pods_SaveFoodFindRecipes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C360DC58E10316492749949 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				671D06AD0301083F9848E205 /* Pods-SaveFoodFindRecipes.debug.xcconfig */,
+				9C8970B96E74A6DD11A6C520 /* Pods-SaveFoodFindRecipes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A61F1EA520078217003BB85B = {
 			isa = PBXGroup;
 			children = (
 				A61F1EB020078217003BB85B /* SaveFoodFindRecipes */,
 				A61F1EAF20078217003BB85B /* Products */,
+				8C360DC58E10316492749949 /* Pods */,
+				1EFFE8012A605B220DD2C5F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +95,7 @@
 				A61F1EB120078217003BB85B /* AppDelegate.swift */,
 				A61F1EB320078217003BB85B /* LogInViewController.swift */,
 				A61F1EB520078217003BB85B /* Main.storyboard */,
+				A6687490200BAC6900365010 /* RecipeData.swift */,
 				A61F1ECD20079F88003BB85B /* DetailViewController.swift */,
 				A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */,
 				A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */,
@@ -89,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A61F1EC020078217003BB85B /* Build configuration list for PBXNativeTarget "SaveFoodFindRecipes" */;
 			buildPhases = (
+				FF6679B65F99B61123A59F9A /* [CP] Check Pods Manifest.lock */,
 				A61F1EAA20078217003BB85B /* Sources */,
 				A61F1EAB20078217003BB85B /* Frameworks */,
 				A61F1EAC20078217003BB85B /* Resources */,
+				AD419A0D0EA1E83AC99E380B /* [CP] Embed Pods Frameworks */,
+				564E68DB836C77013B2AAEAE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +179,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		564E68DB836C77013B2AAEAE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD419A0D0EA1E83AC99E380B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF6679B65F99B61123A59F9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A61F1EAA20078217003BB85B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -160,6 +238,7 @@
 				A61F1EB220078217003BB85B /* AppDelegate.swift in Sources */,
 				A61F1EC620079CDA003BB85B /* SearchViewController.swift in Sources */,
 				A61F1EC820079D8F003BB85B /* SavedRecipesTableViewController.swift in Sources */,
+				A6687491200BAC6900365010 /* RecipeData.swift in Sources */,
 				A61F1EC420079BD4003BB85B /* HomeViewController.swift in Sources */,
 				A61F1ECE20079F88003BB85B /* DetailViewController.swift in Sources */,
 			);
@@ -296,6 +375,7 @@
 		};
 		A61F1EC120078217003BB85B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 671D06AD0301083F9848E205 /* Pods-SaveFoodFindRecipes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -310,6 +390,7 @@
 		};
 		A61F1EC220078217003BB85B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C8970B96E74A6DD11A6C520 /* Pods-SaveFoodFindRecipes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

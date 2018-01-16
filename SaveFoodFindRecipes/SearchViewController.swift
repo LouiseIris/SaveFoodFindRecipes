@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
 
     var recipeResults: [Recipe]?
     
+    @IBOutlet weak var ingredientTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieve() { (recipes) in

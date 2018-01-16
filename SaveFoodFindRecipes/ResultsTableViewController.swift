@@ -21,6 +21,23 @@ class ResultsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func RetrieveDetails(completion: @escaping ([Recipe]?) -> Void) {
+        let url = URL(string: "http://api.yummly.com/v1/api/recipe/Hot-Turkey-Salad-Sandwiches-Allrecipes?_app_id=6dc18156&_app_key=4ba69a9ccd8406d31f15f48886c69b0e")!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let recipes = try? jsonDecoder.decode(Recipes.self, from: data) {
+                completion(recipes.matches)
+                print(recipes)
+            } else {
+                completion(nil)
+                print("nillll")
+            }
+            
+        }
+        task.resume()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

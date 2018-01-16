@@ -13,7 +13,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safe Food Find Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-RH-Kgv">
                                 <rect key="frame" x="16" y="120" width="343" height="119.5"/>
@@ -48,12 +48,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-PW-MH4">
                                 <rect key="frame" x="159" y="573" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="RegisterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MXA-A8-qeY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgT-DW-bLK">
                                 <rect key="frame" x="166" y="521" width="42" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
-                                    <segue destination="qDI-zb-rU2" kind="show" id="Bo4-8W-fgw"/>
+                                    <action selector="LoginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XTc-ND-h9g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,7 +76,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="mib-af-z2x" kind="show" id="f6D-Fy-lSn"/>
+                        <outlet property="emailLoginTextField" destination="Ox5-Lw-b3k" id="S19-l0-8o7"/>
+                        <outlet property="passwordLoginTextField" destination="Zol-dx-NeZ" id="g0a-k1-eUL"/>
+                        <segue destination="qDI-zb-rU2" kind="show" identifier="toTabBarController" id="KMV-cf-abM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,6 +149,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PuV-pX-va0"/>
                     <connections>
+                        <outlet property="ingredientTextField" destination="7lz-1N-pgs" id="6Of-hn-uEl"/>
                         <segue destination="RKa-5D-EVj" kind="show" id="rFn-yQ-ift"/>
                     </connections>
                 </viewController>
@@ -407,7 +413,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="OkB-bR-xNp">
             <objects>
-                <tabBarController id="qDI-zb-rU2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarC" id="qDI-zb-rU2" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="viL-DJ-HTX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -465,7 +471,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f6D-Fy-lSn"/>
         <segue reference="HqT-Ca-rpw"/>
     </inferredMetricsTieBreakers>
 </document>

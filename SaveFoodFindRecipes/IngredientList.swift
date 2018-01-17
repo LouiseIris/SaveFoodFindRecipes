@@ -8,3 +8,6 @@
 
 import Foundation
 
+struct Ingredient: Codable {
+    var searchValue: String
+}

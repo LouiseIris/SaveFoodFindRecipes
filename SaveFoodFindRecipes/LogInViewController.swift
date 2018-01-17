@@ -12,6 +12,8 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController {
     
+    //var totalList = [String]()
+    
     @IBOutlet weak var emailLoginTextField: UITextField!
     
     @IBOutlet weak var passwordLoginTextField: UITextField!
@@ -106,7 +108,14 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         print("yo")
         Check()
-        IngredientsList()
+//        ingredientsList() { (ingredients) in
+//            for ingredient in ingredients! {
+//                self.totalList.append(ingredient.searchValue)
+//                
+//            }
+//            print(self.totalList)
+//            
+//        }
         Checked()
     }
     
@@ -114,13 +123,18 @@ class LogInViewController: UIViewController {
         print("is going to use API")
     }
     
-    func IngredientsList() {
+    
+    
+    func ingredientsList(completion: @escaping ([Ingredient]?) -> Void) {
         let url = URL(string: "http://api.yummly.com/v1/api/metadata/ingredient?_app_id=6dc18156&_app_key=4ba69a9ccd8406d31f15f48886c69b0e")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data,
-                let string = String(data: data, encoding: .utf8) {
-                print(string)
-            }
+            let jsonDecoder = JSONDecoder()
+            var data2 = data!
+            data2.removeFirst(27)
+            data2.removeLast(2)
+            let ingredients = try? jsonDecoder.decode([Ingredient].self, from: data2)
+            completion(ingredients)
+
         }
         task.resume()
     }
@@ -133,6 +147,12 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toTabBarController" {
+//            let next = segue.destination as! SearchViewController
+//            next.totalList = totalList
+//        }
+//    }
     
     
 }

@@ -10,35 +10,53 @@ import UIKit
 
 class ResultsTableViewController: UITableViewController {
 
-    var recipeResults: [Recipe]?
+    var recipeResults = [Recipe]()
+    
+    var ingredient: String?
+    
+//    let apiController = ApiController()
+//    var details = {Details.self}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(ingredient)
+        ApiController.shared.recipeResults(ingredient:ingredient!) { (results) in
+            if let results = results {
+                print("results:")
+                print(results)
+                DispatchQueue.main.async {
+                    self.recipeResults = results
+                    self.tableView.reloadData()
+                }
+                print("end")
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func RetrieveDetails(completion: @escaping ([Recipe]?) -> Void) {
-        let url = URL(string: "http://api.yummly.com/v1/api/recipe/Hot-Turkey-Salad-Sandwiches-Allrecipes?_app_id=6dc18156&_app_key=4ba69a9ccd8406d31f15f48886c69b0e")!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-            if let data = data,
-                let recipes = try? jsonDecoder.decode(Recipes.self, from: data) {
-                completion(recipes.matches)
-                print(recipes)
-            } else {
-                completion(nil)
-                print("nillll")
-            }
-            
-        }
-        task.resume()
-    }
+//    func RetrieveDetails(completion: @escaping ([Recipe]?) -> Void) {
+//        let url = URL(string: "http://api.yummly.com/v1/api/recipe/Hot-Turkey-Salad-Sandwiches-Allrecipes?_app_id=6dc18156&_app_key=4ba69a9ccd8406d31f15f48886c69b0e")!
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            let jsonDecoder = JSONDecoder()
+//            if let data = data,
+//                let recipes = try? jsonDecoder.decode(Recipes.self, from: data) {
+//                completion(recipes.matches)
+//                print(recipes)
+//            } else {
+//                completion(nil)
+//                print("nillll")
+//            }
+//            
+//        }
+//        task.resume()
+//    }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,7 +71,7 @@ class ResultsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return recipeResults!.count
+        return recipeResults.count
     }
 
     
@@ -67,8 +85,27 @@ class ResultsTableViewController: UITableViewController {
     }
     
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        let recipeResult = recipeResults![indexPath.row]
+        let recipeResult = recipeResults[indexPath.row]
         cell.textLabel?.text = recipeResult.recipeName
+        ApiController.shared.recipeImage(url:recipeResults[indexPath.row].smallImageUrls[0]) { (image) in
+            guard let image = image else {return}
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                    return
+                }
+                cell.imageView?.image = image
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetails" {
+            let DetailViewController = segue.destination as! DetailViewController
+            let index = tableView.indexPathForSelectedRow!.row
+            DetailViewController.id = recipeResults[index].id
+            DetailViewController.image = recipeResults[index].smallImageUrls
+        }
     }
     
 

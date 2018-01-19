@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MarkerFeltThin.ttf">
+            <string>MarkerFelt-Thin</string>
+        </array>
+        <array key="MarkerFeltWide.ttf">
+            <string>MarkerFelt-Wide</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -37,24 +45,30 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safe Food Find Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-RH-Kgv">
-                                <rect key="frame" x="16" y="120" width="343" height="119.5"/>
+                                <rect key="frame" x="16" y="100" width="343" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="jse-pY-ykP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="50"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-PW-MH4">
-                                <rect key="frame" x="159" y="573" width="57" height="30"/>
-                                <state key="normal" title="Register"/>
+                                <rect key="frame" x="154.5" y="576" width="66" height="33"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="RegisterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MXA-A8-qeY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgT-DW-bLK">
-                                <rect key="frame" x="166" y="521" width="42" height="30"/>
-                                <state key="normal" title="Log In"/>
+                                <rect key="frame" x="164" y="521" width="46" height="33"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="LoginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XTc-ND-h9g"/>
                                 </connections>
@@ -70,7 +84,7 @@
                             <constraint firstItem="88i-PW-MH4" firstAttribute="top" secondItem="JgT-DW-bLK" secondAttribute="bottom" constant="22" id="mWz-wZ-wc3"/>
                             <constraint firstItem="JgT-DW-bLK" firstAttribute="top" secondItem="Zol-dx-NeZ" secondAttribute="bottom" constant="42" id="s5l-ug-Crm"/>
                             <constraint firstItem="rgZ-RH-Kgv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sxR-13-eC8"/>
-                            <constraint firstItem="rgZ-RH-Kgv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="u7a-eQ-EIy"/>
+                            <constraint firstItem="rgZ-RH-Kgv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="u7a-eQ-EIy"/>
                             <constraint firstItem="Ox5-Lw-b3k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yAn-eT-Pwp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -83,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="25"/>
+            <point key="canvasLocation" x="-111" y="46"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="xvC-vt-Elh">
@@ -121,13 +135,17 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiQ-VZ-L8V">
-                                <rect key="frame" x="88" y="478" width="200" height="30"/>
+                                <rect key="frame" x="88" y="473" width="200" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="vHy-Nv-nkj"/>
                                 </constraints>
-                                <state key="normal" title="Search"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <segue destination="RKa-5D-EVj" kind="show" identifier="buttonToResults" id="HqT-Ca-rpw"/>
+                                    <action selector="searchButtonTapped:" destination="0UI-WY-tse" eventType="touchUpInside" id="sgx-1q-lNb"/>
+                                    <segue destination="RKa-5D-EVj" kind="show" identifier="toResults" id="UW3-fG-uun"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -150,7 +168,6 @@
                     <navigationItem key="navigationItem" id="PuV-pX-va0"/>
                     <connections>
                         <outlet property="ingredientTextField" destination="7lz-1N-pgs" id="bxf-PM-VTl"/>
-                        <segue destination="RKa-5D-EVj" kind="show" id="rFn-yQ-ift"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZF-gY-gy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -172,9 +189,15 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a1C-XM-90f" id="2nC-Cx-FyP">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vo-Se-P18">
+                                            <rect key="frame" x="16" y="0.0" width="65" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1kr-gX-kUU" kind="show" id="5Kk-AF-huw"/>
+                                    <segue destination="1kr-gX-kUU" kind="show" identifier="toDetails" id="5Kk-AF-huw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,14 +220,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-5m-iWE">
-                                <rect key="frame" x="16" y="94" width="343" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-5m-iWE">
+                                <rect key="frame" x="16" y="94" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="inU-Qw-o86">
-                                <rect key="frame" x="16" y="153" width="343" height="200"/>
+                                <rect key="frame" x="16" y="147" width="343" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="dKy-Zz-h0r"/>
                                     <constraint firstAttribute="height" constant="200" id="rA0-WP-81i"/>
@@ -225,6 +248,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1ea-O3-KJv"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="inU-Qw-o86" id="cNy-jm-S6F"/>
+                        <outlet property="titleLabel" destination="Ce6-5m-iWE" id="efl-L8-B2E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AN-eC-2gT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -356,35 +383,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Recipe" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-5a-LaZ">
-                                <rect key="frame" x="16" y="120" width="343" height="29"/>
+                                <rect key="frame" x="16" y="120" width="343" height="28.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="8gZ-Zn-rha"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="26"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eq0-ZI-EWc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="Eq0-ZI-EWc">
                                 <rect key="frame" x="67" y="283" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9Ln-tk-N7P"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EK-Mk-5Zf">
-                                <rect key="frame" x="67" y="441" width="240" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lovely Recipe" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EK-Mk-5Zf">
+                                <rect key="frame" x="67" y="441" width="240" height="18.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="CSd-cD-zhV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neC-66-VaQ">
-                                <rect key="frame" x="259" y="36" width="100" height="30"/>
+                                <rect key="frame" x="259" y="36" width="100" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="pgi-Tj-r0z"/>
                                 </constraints>
-                                <state key="normal" title="Log Out"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -405,6 +435,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="ccf-s2-jIe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="Eq0-ZI-EWc" id="Usb-23-nTq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5f-8l-k3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -470,7 +503,7 @@
             <point key="canvasLocation" x="4025.5999999999999" y="339.13043478260875"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HqT-Ca-rpw"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Food" width="1138" height="761"/>
+    </resources>
 </document>

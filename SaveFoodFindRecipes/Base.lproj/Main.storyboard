@@ -21,7 +21,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="BYZ-38-t0r" customClass="LogInViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safe Food Find Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-RH-Kgv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Food Find Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-RH-Kgv">
                                 <rect key="frame" x="16" y="100" width="343" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="jse-pY-ykP"/>
@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="2359" y="1091"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Title-->
         <scene sceneID="SVh-mr-zAl">
             <objects>
                 <viewController id="1kr-gX-kUU" customClass="DetailViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -234,6 +234,11 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="spc-Ew-jba"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="die-80-lys">
+                                <rect key="frame" x="67" y="451" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -248,8 +253,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1ea-O3-KJv"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="wBS-C2-I4j">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="tP2-Cp-fWc">
+                            <connections>
+                                <segue destination="BTw-4w-S5K" kind="show" identifier="toSaved" id="MXw-Gc-RjK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="inU-Qw-o86" id="cNy-jm-S6F"/>
+                        <outlet property="tableView" destination="die-80-lys" id="Mkg-04-rdg"/>
                         <outlet property="titleLabel" destination="Ce6-5m-iWE" id="efl-L8-B2E"/>
                     </connections>
                 </viewController>
@@ -406,8 +419,8 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neC-66-VaQ">
-                                <rect key="frame" x="259" y="36" width="100" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neC-66-VaQ">
+                                <rect key="frame" x="259" y="20" width="100" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="pgi-Tj-r0z"/>
                                 </constraints>
@@ -415,6 +428,9 @@
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="LogoutButtonTapped:" destination="mib-af-z2x" eventType="touchUpInside" id="9XN-Zt-YVy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -506,4 +522,7 @@
     <resources>
         <image name="Food" width="1138" height="761"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MXw-Gc-RjK"/>
+    </inferredMetricsTieBreakers>
 </document>

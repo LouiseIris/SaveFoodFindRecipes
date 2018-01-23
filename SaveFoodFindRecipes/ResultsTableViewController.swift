@@ -104,7 +104,7 @@ class ResultsTableViewController: UITableViewController {
             let DetailViewController = segue.destination as! DetailViewController
             let index = tableView.indexPathForSelectedRow!.row
             DetailViewController.id = recipeResults[index].id
-            DetailViewController.image = recipeResults[index].smallImageUrls
+            //DetailViewController.image = recipeResults[index].smallImageUrls
         }
     }
     

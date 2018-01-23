@@ -7,17 +7,56 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class SavedRecipesTableViewController: UITableViewController {
+    
+//    var recipeId: String = ""
+//    var recipeName: String = ""
+//    var recipeImages = [Images]()
+    var email: String = ""
+    var savedList = []
+    
+    let ref = Database.database().reference().child("Saved_recipes")
+    var dataRef = Database.database().reference(email)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataRef.observeSingleEvent(of: .value, with: { snapshot in
+            self.savedList = []
+            //let recipeName = snapshot.childSnapshot(forPath: "name").value
+            for recipes in snapshot.children.allObjects as! [DataSnapshot] {
+                let recipeID = events.value as? [String: AnyObject]
+                let recipeName = eventObject?["name"]
+                let recipeImage = eventObject?["image"]
+            }
+        })
+        
+        
+        currentUser()
+        ref.queryOrdered(byChild: email).observe(.value, with: { snapshot in
+            print(snapshot.value)
+//            var user = snapshot.value![email]
+//            print(user)
+        })
+//        print(recipeId)
+//        print(recipeName)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func currentUser() {
+        var userEmail = (Auth.auth().currentUser?.email)!
+        if let shortenedUser = userEmail.range(of: "@")?.lowerBound {
+            let substring = userEmail[..<shortenedUser]
+            email = String(substring)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,6 +18,7 @@
 		A61F1ECA20079DC8003BB85B /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */; };
 		A61F1ECC20079F64003BB85B /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */; };
 		A61F1ECE20079F88003BB85B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F1ECD20079F88003BB85B /* DetailViewController.swift */; };
+		A636BE0420163A1600392C2D /* SavedRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A636BE0320163A1600392C2D /* SavedRecipes.swift */; };
 		A6687491200BAC6900365010 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6687490200BAC6900365010 /* RecipeData.swift */; };
 		A6687496200CE86C00365010 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6687495200CE86B00365010 /* GoogleService-Info.plist */; };
 		A6687498200E111B00365010 /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6687497200E111B00365010 /* IngredientList.swift */; };
@@ -43,6 +44,7 @@
 		A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
 		A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		A61F1ECD20079F88003BB85B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A636BE0320163A1600392C2D /* SavedRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipes.swift; sourceTree = "<group>"; };
 		A6687490200BAC6900365010 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		A6687492200CD90200365010 /* SaveFoodFindRecipes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SaveFoodFindRecipes.entitlements; sourceTree = "<group>"; };
 		A6687495200CE86B00365010 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				A61F1ECD20079F88003BB85B /* DetailViewController.swift */,
 				A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */,
 				A6687499200E24E200365010 /* RecipeDetails.swift */,
+				A636BE0320163A1600392C2D /* SavedRecipes.swift */,
 				A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */,
 				A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */,
 				A61F1EC520079CDA003BB85B /* SearchViewController.swift */,
@@ -202,7 +205,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		564E68DB836C77013B2AAEAE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -210,14 +213,14 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AD419A0D0EA1E83AC99E380B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -225,14 +228,14 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveFoodFindRecipes/Pods-SaveFoodFindRecipes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF6679B65F99B61123A59F9A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -240,7 +243,7 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
@@ -260,6 +263,7 @@
 				A668749A200E24E200365010 /* RecipeDetails.swift in Sources */,
 				A61F1EC820079D8F003BB85B /* SavedRecipesTableViewController.swift in Sources */,
 				A6687498200E111B00365010 /* IngredientList.swift in Sources */,
+				A636BE0420163A1600392C2D /* SavedRecipes.swift in Sources */,
 				A668749E200E5C7D00365010 /* ApiController.swift in Sources */,
 				A6687491200BAC6900365010 /* RecipeData.swift in Sources */,
 				A61F1EC420079BD4003BB85B /* HomeViewController.swift in Sources */,

@@ -7,18 +7,40 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 //struct Attributes: Codable {
 //    var holiday: [String]
 //    var cuisine: [String]
 //}
 
+struct Images: Codable {
+    var hostedLargeUrl: URL
+}
+
+struct Source: Codable {
+    var sourceRecipeUrl: URL
+}
+
 struct Details: Codable {
     var ingredientLines: [String]
     var name: String
     var yield: String!
     var totalTime: String
-    //var attributes: {Attributes}
+    //var attributes: Attributes
     var id: String
+    var images: [Images]
+    var source: Source
+    
+    
+//    func toAnyObject() -> Any {
+//        return [
+//            "name": name,
+//            "id": id,
+//            "images": images
+//        ]
+//    }
 }
+
+
 

@@ -16,4 +16,8 @@ Ik kan nu ook plaatjes binnenhalen. Ik had eerst de verkeerde, die fotos waren t
 # Dag 6  
 Vandaag heb ik de database voor bewaarde recepten op Firebase voor elkaar gekregen. Het lukte nog niet om de data weer uit te lezen in mijn app.  
   
-# Dag 7
+# Dag 7  
+Het uitlezen van de data is gelukt. De layout heb ik aangepast zodat het results screen en saved recipes screen er beter uit zien.  
+  
+# Dag 8  
+

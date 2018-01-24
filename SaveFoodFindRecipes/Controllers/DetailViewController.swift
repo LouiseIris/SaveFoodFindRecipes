@@ -42,6 +42,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print(self.ingredientLines)
                 DispatchQueue.main.async {
                     self.titleLabel.text = self.name
+                    self.tableView.separatorStyle = .none
+                    self.tableView.reloadData()
                 }
                 self.images = details.images
                 //image = self.images[0].hostedLargeUrl
@@ -106,9 +108,18 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientsCellIdentifier", for: indexPath)
+        configure(cell: cell, forItemAt: indexPath)
+        
+        return cell
     }
+    
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
+        cell.textLabel?.text = ingredientLines[indexPath.row]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return ingredientLines.count
     }
 }

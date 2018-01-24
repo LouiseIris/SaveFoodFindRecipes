@@ -103,27 +103,43 @@
 		A61F1EB020078217003BB85B /* SaveFoodFindRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				A6A85186201894B100FC3A70 /* Models */,
+				A6A851842018948500FC3A70 /* Controllers */,
 				A668749D200E5C7D00365010 /* ApiController.swift */,
 				A6687492200CD90200365010 /* SaveFoodFindRecipes.entitlements */,
 				A6687495200CE86B00365010 /* GoogleService-Info.plist */,
 				A61F1EB120078217003BB85B /* AppDelegate.swift */,
-				A61F1EB320078217003BB85B /* LogInViewController.swift */,
 				A61F1EB520078217003BB85B /* Main.storyboard */,
-				A6687497200E111B00365010 /* IngredientList.swift */,
-				A6687490200BAC6900365010 /* RecipeData.swift */,
-				A61F1ECD20079F88003BB85B /* DetailViewController.swift */,
-				A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */,
-				A6687499200E24E200365010 /* RecipeDetails.swift */,
-				A636BE0320163A1600392C2D /* SavedRecipes.swift */,
-				A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */,
-				A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */,
-				A61F1EC520079CDA003BB85B /* SearchViewController.swift */,
-				A61F1EC320079BD4003BB85B /* HomeViewController.swift */,
 				A61F1EB820078217003BB85B /* Assets.xcassets */,
 				A61F1EBA20078217003BB85B /* LaunchScreen.storyboard */,
 				A61F1EBD20078217003BB85B /* Info.plist */,
 			);
 			path = SaveFoodFindRecipes;
+			sourceTree = "<group>";
+		};
+		A6A851842018948500FC3A70 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A61F1EB320078217003BB85B /* LogInViewController.swift */,
+				A61F1ECD20079F88003BB85B /* DetailViewController.swift */,
+				A61F1ECB20079F64003BB85B /* ResultsTableViewController.swift */,
+				A61F1EC920079DC8003BB85B /* GroceryListTableViewController.swift */,
+				A61F1EC720079D8F003BB85B /* SavedRecipesTableViewController.swift */,
+				A61F1EC520079CDA003BB85B /* SearchViewController.swift */,
+				A61F1EC320079BD4003BB85B /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A6A85186201894B100FC3A70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6687497200E111B00365010 /* IngredientList.swift */,
+				A6687490200BAC6900365010 /* RecipeData.swift */,
+				A6687499200E24E200365010 /* RecipeDetails.swift */,
+				A636BE0320163A1600392C2D /* SavedRecipes.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

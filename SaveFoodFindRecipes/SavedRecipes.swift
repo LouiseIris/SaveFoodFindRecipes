@@ -21,5 +21,9 @@ struct Saved: Codable {
 //        addedByUser = snapshotValue["addedByUser"] as! String
 //        completed = snapshotValue["completed"] as! Bool
 //        ref = snapshot.ref
-    }
+//    }
+}
+
+struct SavedId: Codable {
+    var favorites: Saved
 }

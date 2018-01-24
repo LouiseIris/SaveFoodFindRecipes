@@ -94,6 +94,8 @@ class ResultsTableViewController: UITableViewController {
                     return
                 }
                 cell.imageView?.image = image
+                cell.imageView?.layer.cornerRadius = 9.0
+                cell.imageView?.clipsToBounds = true
                 self.tableView.reloadData()
             }
         }

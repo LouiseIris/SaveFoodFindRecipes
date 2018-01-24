@@ -12,32 +12,60 @@ import FirebaseDatabase
 
 class SavedRecipesTableViewController: UITableViewController {
     
-//    var recipeId: String = ""
-//    var recipeName: String = ""
-//    var recipeImages = [Images]()
+    var recipeIds = [String]()
+    var recipeNames = [String]()
+    var recipeImages = [URL]()
     var email: String = ""
-    var savedList = []
+    //var savedList = []
     
     let ref = Database.database().reference().child("Saved_recipes")
-    var dataRef = Database.database().reference(email)
+    //var dataRef = Database.database().reference(email)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataRef.observeSingleEvent(of: .value, with: { snapshot in
-            self.savedList = []
-            //let recipeName = snapshot.childSnapshot(forPath: "name").value
-            for recipes in snapshot.children.allObjects as! [DataSnapshot] {
-                let recipeID = events.value as? [String: AnyObject]
-                let recipeName = eventObject?["name"]
-                let recipeImage = eventObject?["image"]
-            }
-        })
+//        dataRef.observeSingleEvent(of: .value, with: { snapshot in
+//            self.savedList = []
+//            //let recipeName = snapshot.childSnapshot(forPath: "name").value
+//            for recipes in snapshot.children.allObjects as! [DataSnapshot] {
+//                let recipeID = events.value as? [String: AnyObject]
+//                let recipeName = eventObject?["name"]
+//                let recipeImage = eventObject?["image"]
+//            }
+//        })
         
         
         currentUser()
-        ref.queryOrdered(byChild: email).observe(.value, with: { snapshot in
-            print(snapshot.value)
+        ref.child(email).observe(.value, with: { snapshot in
+            //print(snapshot.value)
+            let favorites = snapshot.value as? [String:NSDictionary]
+            //print(favorites)
+            
+            for favorite in favorites! {
+                self.recipeIds.append(favorite.key)
+                let name = favorite.value["name"]
+                self.recipeNames.append(name as! String)
+                let image = (favorite.value["image"])
+                let imageUrl = NSURL(string: image as! String)
+                self.recipeImages.append(imageUrl as! URL)
+                //self.recipeName.append(favorite.key["name"])
+                print("jeej")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+
+            print(self.recipeNames)
+//            let jsonDecoder = JSONDecoder()
+//            if favorite = favorite,
+//                let results = try? jsonDecoder.decode(Recipes.self, from: favorite) {
+//                completion(results)
+//                print(results)
+//            } else {
+//                completion(nil)
+//                print("nillll")
+//            }
 //            var user = snapshot.value![email]
 //            print(user)
         })
@@ -68,23 +96,38 @@ class SavedRecipesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return recipeNames.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCellIdentifier", for: indexPath)
 
         // Configure the cell...
+        configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        cell.textLabel?.text = recipeNames[indexPath.row]
+        ApiController.shared.recipeImage(url:recipeImages[indexPath.row]) { (image) in
+            guard let image = image else {return}
+            DispatchQueue.main.async {
+                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
+                    return
+                }
+                cell.imageView?.image = image
+                cell.imageView?.layer.cornerRadius = 9.0
+                cell.imageView?.clipsToBounds = true
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

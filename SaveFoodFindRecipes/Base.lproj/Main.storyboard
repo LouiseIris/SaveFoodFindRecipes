@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="-111" y="46"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="xvC-vt-Elh">
             <objects>
                 <viewController id="0UI-WY-tse" customClass="SearchViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -136,6 +136,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiQ-VZ-L8V">
                                 <rect key="frame" x="88" y="473" width="200" height="35"/>
+                                <color key="backgroundColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="vHy-Nv-nkj"/>
                                 </constraints>
@@ -148,15 +149,25 @@
                                     <segue destination="RKa-5D-EVj" kind="show" identifier="toResults" id="UW3-fG-uun"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What ingredients do you have at home?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t3-HI-OR9">
+                                <rect key="frame" x="16" y="84" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gfV-5V-vZ9" firstAttribute="top" secondItem="LtY-r6-IeQ" secondAttribute="bottom" constant="40" id="1oK-MB-atA"/>
+                            <constraint firstItem="4lb-c0-gyu" firstAttribute="trailing" secondItem="6t3-HI-OR9" secondAttribute="trailing" constant="16" id="5d5-iN-OLh"/>
                             <constraint firstItem="eiQ-VZ-L8V" firstAttribute="centerX" secondItem="lEx-YI-65w" secondAttribute="centerX" id="ADv-e1-ylQ"/>
+                            <constraint firstItem="6t3-HI-OR9" firstAttribute="top" secondItem="4lb-c0-gyu" secondAttribute="top" constant="20" id="EBj-jW-iED"/>
                             <constraint firstItem="4lb-c0-gyu" firstAttribute="bottom" secondItem="eiQ-VZ-L8V" secondAttribute="bottom" constant="110" id="I50-Xy-0CO"/>
                             <constraint firstItem="7lz-1N-pgs" firstAttribute="top" secondItem="4lb-c0-gyu" secondAttribute="top" constant="100" id="NSM-wH-823"/>
                             <constraint firstItem="LtY-r6-IeQ" firstAttribute="trailing" secondItem="gfV-5V-vZ9" secondAttribute="trailing" id="Q7p-g9-Bq0"/>
+                            <constraint firstItem="6t3-HI-OR9" firstAttribute="centerX" secondItem="lEx-YI-65w" secondAttribute="centerX" id="SMA-hm-n9n"/>
                             <constraint firstItem="LtY-r6-IeQ" firstAttribute="leading" secondItem="gfV-5V-vZ9" secondAttribute="leading" id="TvJ-jQ-L0v"/>
+                            <constraint firstItem="6t3-HI-OR9" firstAttribute="leading" secondItem="4lb-c0-gyu" secondAttribute="leading" constant="16" id="g0a-hx-2th"/>
                             <constraint firstItem="LtY-r6-IeQ" firstAttribute="centerX" secondItem="eiQ-VZ-L8V" secondAttribute="centerX" id="puL-WN-Rjq"/>
                             <constraint firstItem="LtY-r6-IeQ" firstAttribute="top" secondItem="7lz-1N-pgs" secondAttribute="bottom" constant="40" id="tFe-3t-f8m"/>
                             <constraint firstItem="gfV-5V-vZ9" firstAttribute="centerX" secondItem="lEx-YI-65w" secondAttribute="centerX" id="vxb-Fr-gzl"/>
@@ -165,7 +176,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4lb-c0-gyu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PuV-pX-va0"/>
+                    <navigationItem key="navigationItem" title="Search" id="PuV-pX-va0"/>
                     <connections>
                         <outlet property="ingredientTextField" destination="7lz-1N-pgs" id="bxf-PM-VTl"/>
                     </connections>
@@ -193,7 +204,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iwb-qt-ad8">
                                             <rect key="frame" x="142" y="0.0" width="198" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -219,7 +230,7 @@
             </objects>
             <point key="canvasLocation" x="2359" y="1091"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Recipe-->
         <scene sceneID="SVh-mr-zAl">
             <objects>
                 <viewController id="1kr-gX-kUU" customClass="DetailViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -228,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-5m-iWE">
-                                <rect key="frame" x="16" y="284" width="343" height="23"/>
+                                <rect key="frame" x="6" y="284" width="363" height="23"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -240,17 +251,22 @@
                                     <constraint firstAttribute="height" constant="200" id="rA0-WP-81i"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="die-80-lys">
-                                <rect key="frame" x="67" y="413" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="die-80-lys">
+                                <rect key="frame" x="16" y="413" width="342" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="v62-Ab-BUB"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="die-80-lys" firstAttribute="centerX" secondItem="21M-1r-NFe" secondAttribute="centerX" id="9gA-EA-7ci"/>
                             <constraint firstItem="inU-Qw-o86" firstAttribute="leading" secondItem="1ea-O3-KJv" secondAttribute="leading" id="DJA-0g-bCB"/>
-                            <constraint firstItem="1ea-O3-KJv" firstAttribute="trailing" secondItem="Ce6-5m-iWE" secondAttribute="trailing" constant="16" id="Io0-kf-wIr"/>
-                            <constraint firstItem="Ce6-5m-iWE" firstAttribute="leading" secondItem="1ea-O3-KJv" secondAttribute="leading" constant="16" id="iLf-jX-v28"/>
+                            <constraint firstItem="1ea-O3-KJv" firstAttribute="bottom" secondItem="die-80-lys" secondAttribute="bottom" constant="77" id="GYw-w5-E7i"/>
+                            <constraint firstItem="1ea-O3-KJv" firstAttribute="trailing" secondItem="Ce6-5m-iWE" secondAttribute="trailing" constant="6" id="Io0-kf-wIr"/>
+                            <constraint firstItem="die-80-lys" firstAttribute="leading" secondItem="1ea-O3-KJv" secondAttribute="leading" constant="16" id="d7Q-qA-TBD"/>
+                            <constraint firstItem="Ce6-5m-iWE" firstAttribute="leading" secondItem="1ea-O3-KJv" secondAttribute="leading" constant="6" id="iLf-jX-v28"/>
                             <constraint firstItem="1ea-O3-KJv" firstAttribute="trailing" secondItem="inU-Qw-o86" secondAttribute="trailing" id="jC6-Sw-bZZ"/>
                             <constraint firstItem="inU-Qw-o86" firstAttribute="top" secondItem="1ea-O3-KJv" secondAttribute="top" id="kU8-yN-DgV"/>
                             <constraint firstItem="Ce6-5m-iWE" firstAttribute="top" secondItem="inU-Qw-o86" secondAttribute="bottom" constant="20" id="mPw-r8-qHL"/>
@@ -259,7 +275,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1ea-O3-KJv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wBS-C2-I4j">
+                    <navigationItem key="navigationItem" title="Recipe" id="wBS-C2-I4j">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="tP2-Cp-fWc">
                             <connections>
                                 <segue destination="BTw-4w-S5K" kind="show" identifier="toSaved" id="MXw-Gc-RjK"/>
@@ -276,7 +292,7 @@
             </objects>
             <point key="canvasLocation" x="3086" y="1091"/>
         </scene>
-        <!--Saved-->
+        <!--Saved Recipes-->
         <scene sceneID="DEg-Hz-vbh">
             <objects>
                 <tableViewController id="BTw-4w-S5K" customClass="SavedRecipesTableViewController" customModule="SaveFoodFindRecipes" customModuleProvider="target" sceneMemberID="viewController">
@@ -314,6 +330,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Saved" id="bUT-7X-Qji"/>
+                    <navigationItem key="navigationItem" title="Saved Recipes" id="HH0-a3-hBA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4V-TT-hwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,6 +561,6 @@
         <image name="Food" width="1138" height="761"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XaC-yD-fZ8"/>
+        <segue reference="MXw-Gc-RjK"/>
     </inferredMetricsTieBreakers>
 </document>

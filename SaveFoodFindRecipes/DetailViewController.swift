@@ -9,9 +9,8 @@
 import UIKit
 import Firebase
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //UITableViewDelegate, UITableViewDataSource
     let ref = Database.database().reference().child("Saved_recipes")
     
     let apiController = ApiController()
@@ -21,6 +20,7 @@ class DetailViewController: UIViewController {
     var images = [Images]()
     //var temp = {Images}
     var name: String = ""
+    var ingredientLines = [String]()
     
     var email: String = ""
 
@@ -30,14 +30,16 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         print("1")
         ApiController.shared.detailsRecipe(id:id) { (details) in
             if let details = details {
                 print("2")
                 print(details)
                 self.name = details.name
+                self.ingredientLines = details.ingredientLines
+                print(self.ingredientLines)
                 DispatchQueue.main.async {
                     self.titleLabel.text = self.name
                 }
@@ -50,11 +52,6 @@ class DetailViewController: UIViewController {
                         self.imageView.image = image
                     }
                 }
-                //                for ingredientLine in details.ingredientLines {
-                //                    let ingredientButton = UIButton(type: UIButtonType.system)
-                //                    ingredientButton.setTitle(ingredientLine, for: .normal)
-                //                    self.view.addSubview(ingredientButton)
-                //                }
             }
         }
 
@@ -108,10 +105,10 @@ class DetailViewController: UIViewController {
     */
     
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
 }

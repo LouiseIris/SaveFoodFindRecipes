@@ -20,4 +20,7 @@ Vandaag heb ik de database voor bewaarde recepten op Firebase voor elkaar gekreg
 Het uitlezen van de data is gelukt. De layout heb ik aangepast zodat het results screen en saved recipes screen er beter uit zien.  
   
 # Dag 8  
+Mapjes voor models en controllers zodat het overzichtelijker is. Ik heb een table view voor ingredienten in de detail viewcontroller gemaakt.  
+  
+# Dag 9  
 

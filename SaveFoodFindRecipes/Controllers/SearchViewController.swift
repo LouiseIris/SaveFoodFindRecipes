@@ -17,6 +17,8 @@ class SearchViewController: UIViewController {
     //var recipeResults: [Recipe]?
     
     var totalList = [String]()
+//    var totalList2 = [String]()
+//    var totalList3 = [String]()
     
     var ingredients = [Ingredient]()
     
@@ -25,7 +27,8 @@ class SearchViewController: UIViewController {
     //static let share = SearchViewController()
     
     @IBOutlet weak var ingredientTextField: SearchTextField!
-    
+    @IBOutlet weak var ingredientTextField2: SearchTextField!
+    @IBOutlet weak var ingredientTextField3: SearchTextField!
     @IBAction func searchButtonTapped(_ sender: UIButton) {
 //        ingredient = self.ingredientTextField.text!
 //        print(ingredient)
@@ -39,9 +42,12 @@ class SearchViewController: UIViewController {
                 //print(ingredients)
                 for ingredient in ingredients {
                     self.totalList.append(ingredient.searchValue)
+//                    self.totalList2.append(ingredient.searchValue)
+//                    self.totalList3.append(ingredient.searchValue)
                 }
-                //print(self.totalList)
                 self.ingredientTextField.filterStrings(self.totalList)
+                self.ingredientTextField2.filterStrings(self.totalList)
+                self.ingredientTextField3.filterStrings(self.totalList)
                 //self.updateUI()
             }
             
@@ -121,6 +127,8 @@ class SearchViewController: UIViewController {
         if segue.identifier == "toResults" {
             let next = segue.destination as! ResultsTableViewController
             next.ingredient = self.ingredientTextField.text!
+            next.ingredient2 = self.ingredientTextField2.text!
+            next.ingredient3 = self.ingredientTextField3.text!
         }
     }
     

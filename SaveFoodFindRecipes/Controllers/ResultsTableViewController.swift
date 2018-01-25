@@ -13,6 +13,8 @@ class ResultsTableViewController: UITableViewController {
     var recipeResults = [Recipe]()
     
     var ingredient: String?
+    var ingredient2: String?
+    var ingredient3: String?
     
 //    let apiController = ApiController()
 //    var details = {Details.self}
@@ -20,6 +22,17 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(ingredient)
+        print(ingredient2)
+        print(ingredient3)
+        if ingredient2 != "" {
+            ingredient = ingredient! + "&allowedIngredient[]=" + ingredient2!
+        }
+        if ingredient3 != "" {
+            ingredient = ingredient! + "&allowedIngredient[]=" + ingredient3!
+        }
+        print(ingredient)
+        print(ingredient2)
+        print(ingredient3)
         ApiController.shared.recipeResults(ingredient:ingredient!) { (results) in
             if let results = results {
                 print("results:")

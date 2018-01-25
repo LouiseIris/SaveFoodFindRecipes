@@ -20,9 +20,6 @@
         <array key="MarkerFeltThin.ttf">
             <string>MarkerFelt-Thin</string>
         </array>
-        <array key="MarkerFeltWide.ttf">
-            <string>MarkerFelt-Wide</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Log In View Controller-->
@@ -52,11 +49,11 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Food Find Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-RH-Kgv">
-                                <rect key="frame" x="16" y="100" width="343" height="130"/>
+                                <rect key="frame" x="16" y="100" width="343" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="jse-pY-ykP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="50"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -123,7 +120,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LtY-r6-IeQ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LtY-r6-IeQ" customClass="SearchTextField" customModule="SearchTextField">
                                 <rect key="frame" x="88" y="234" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="rKp-vY-mSe"/>
@@ -132,7 +129,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfV-5V-vZ9">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfV-5V-vZ9" customClass="SearchTextField" customModule="SearchTextField">
                                 <rect key="frame" x="88" y="304" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="wlr-J4-LtL"/>
@@ -186,6 +183,8 @@
                     <navigationItem key="navigationItem" title="Search" id="PuV-pX-va0"/>
                     <connections>
                         <outlet property="ingredientTextField" destination="7lz-1N-pgs" id="bxf-PM-VTl"/>
+                        <outlet property="ingredientTextField2" destination="LtY-r6-IeQ" id="m3W-6q-hPl"/>
+                        <outlet property="ingredientTextField3" destination="gfV-5V-vZ9" id="SuB-lN-9y5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZF-gY-gy1" userLabel="First Responder" sceneMemberID="firstResponder"/>

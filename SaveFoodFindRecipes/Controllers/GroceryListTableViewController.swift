@@ -7,11 +7,31 @@
 //
 
 import UIKit
+import Firebase
 
 class GroceryListTableViewController: UITableViewController {
 
+    let ref2 = Database.database().reference().child("Grocery_list")
+    let userID = Auth.auth().currentUser!.uid
+    var groceryItems = [String]()
+    //var items = [String:NSDictionary]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("blabla")
+        ref2.child(userID).observe(.value, with: { snapshot in
+            print(snapshot.value)
+            let items = snapshot.value as? [String:NSDictionary]
+            print(items)
+            for item in items! {
+                print(item.key)
+                self.groceryItems.append(item.key)
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        print(groceryItems)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +49,26 @@ class GroceryListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return groceryItems.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groceryCellIdentifier", for: indexPath)
 
         // Configure the cell...
+        configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        cell.textLabel?.text = groceryItems[indexPath.row]
+    }
 
     /*
     // Override to support conditional editing of the table view.

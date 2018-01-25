@@ -37,9 +37,9 @@ class SavedRecipesTableViewController: UITableViewController {
         
         currentUser()
         ref.child(email).observe(.value, with: { snapshot in
-            //print(snapshot.value)
+            print(snapshot.value)
             let favorites = snapshot.value as? [String:NSDictionary]
-            //print(favorites)
+            print(favorites)
             
             for favorite in favorites! {
                 self.recipeIds.append(favorite.key)
@@ -55,28 +55,7 @@ class SavedRecipesTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             
-
-            print(self.recipeNames)
-//            let jsonDecoder = JSONDecoder()
-//            if favorite = favorite,
-//                let results = try? jsonDecoder.decode(Recipes.self, from: favorite) {
-//                completion(results)
-//                print(results)
-//            } else {
-//                completion(nil)
-//                print("nillll")
-//            }
-//            var user = snapshot.value![email]
-//            print(user)
         })
-//        print(recipeId)
-//        print(recipeName)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     func currentUser() {

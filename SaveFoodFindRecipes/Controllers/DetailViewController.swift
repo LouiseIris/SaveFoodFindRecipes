@@ -12,6 +12,10 @@ import Firebase
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let ref = Database.database().reference().child("Saved_recipes")
+    let ref2 = Database.database().reference().child("Grocery_list")
+    let ref3 = Database.database().reference().child("Points")
+    let userID = Auth.auth().currentUser!.uid
+    var counter = 0
     
     let apiController = ApiController()
     var details = {Details.self}
@@ -121,5 +125,28 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientLines.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //code to execute on click
+        let alertController = UIAlertController(title: "Ingredient", message: ingredientLines[indexPath.row], preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        let addAction = UIAlertAction(title: "Add To Grocery List", style: .destructive) { action in
+            let item = self.ingredientLines[indexPath.row]
+            print(item)
+            let child = self.ref2.child(self.userID).child(item).setValue(["item\(self.counter)": item])
+            self.counter += 1
+        }
+        alertController.addAction(addAction)
+        let homeAction = UIAlertAction(title: "Have It At Home", style: .destructive) { action in
+            let thing = "yo"
+            print(thing)
+            let child = self.ref3.child(self.userID).setValue(["points": 1])
+        }
+        alertController.addAction(homeAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

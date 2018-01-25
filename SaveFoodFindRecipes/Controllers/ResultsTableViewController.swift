@@ -98,8 +98,13 @@ class ResultsTableViewController: UITableViewController {
     }
     
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        
         let recipeResult = recipeResults[indexPath.row]
         cell.textLabel?.text = recipeResult.recipeName
+        
+//        cell.imageView?.image = #imageLiteral(resourceName: "Food")
+//        cell.recipeResult = recipeResult
+        
         ApiController.shared.recipeImage(url:recipeResults[indexPath.row].smallImageUrls[0]) { (image) in
             guard let image = image else {return}
             DispatchQueue.main.async {

@@ -14,13 +14,13 @@ This app will let the user fill in the ingredients they have at home and then th
 list of main features:  
 * login MVP  
 * fill in ingredients MVP  
-* autocomplete ingredients search
+* autocomplete ingredients search MVP
 * order found recipes with recipes that use the filled in ingredients the most on top 
 * save recipe MVP  
 * add ingredient to grocerylist MVP  
 * list saved recipes MVP  
 * list ingredients that need to be bought MVP  
-* filter recipes by course, cuisine, allergies, preperation time MVP
+* filter recipes by course, cuisine, allergies, preperation time
 * get points for ingredients that are not spilled
 * leaderboard with most environmentally conscious persons
 * daily recipe suggestion based on earlier used recipes

@@ -23,6 +23,7 @@ class SavedRecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
 //        dataRef.observeSingleEvent(of: .value, with: { snapshot in
 //            self.savedList = []
@@ -37,20 +38,24 @@ class SavedRecipesTableViewController: UITableViewController {
         
         currentUser()
         ref.child(email).observe(.value, with: { snapshot in
+            var tempIdsList = [String]()
+            var tempNamesList = [String]()
+            var tempImagesList = [URL]()
             print(snapshot.value)
             let favorites = snapshot.value as? [String:NSDictionary]
             print(favorites)
             
             for favorite in favorites! {
-                self.recipeIds.append(favorite.key)
+                tempIdsList.append(favorite.key)
                 let name = favorite.value["name"]
-                self.recipeNames.append(name as! String)
+                tempNamesList.append(name as! String)
                 let image = (favorite.value["image"])
                 let imageUrl = NSURL(string: image as! String)
-                self.recipeImages.append(imageUrl as! URL)
-                //self.recipeName.append(favorite.key["name"])
-                print("jeej")
+                tempImagesList.append(imageUrl as! URL)
             }
+            self.recipeIds = tempIdsList
+            self.recipeNames = tempNamesList
+            self.recipeImages = tempImagesList
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -115,18 +120,31 @@ class SavedRecipesTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            self.ref.child(self.email).child(recipeIds[indexPath.row]).removeValue()
+            recipeIds.remove(at: indexPath.row)
+            recipeNames.remove(at: indexPath.row)
+            recipeImages.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
-    */
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "savedToDetails" {
+            let detailViewController = segue.destination as! DetailViewController
+            let index = tableView.indexPathForSelectedRow!.row
+            detailViewController.id = recipeIds[index]
+            detailViewController.hideSaveButton = true
+            //DetailViewController.image = recipeResults[index].smallImageUrls
+        }
+    }
 
     /*
     // Override to support rearranging the table view.

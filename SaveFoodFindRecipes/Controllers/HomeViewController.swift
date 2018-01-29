@@ -7,9 +7,12 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class HomeViewController: UIViewController {
+    
+    let ref3 = Database.database().reference().child("Points")
+    let userID = Auth.auth().currentUser!.uid
 
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func LogoutButtonTapped(_ sender: UIButton) {
@@ -29,9 +32,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         imageView?.layer.cornerRadius = 9.0
         imageView?.clipsToBounds = true
-//        DispatchQueue.main.async {
-//            self.imageView.image = image
-//        }
     }
     
     

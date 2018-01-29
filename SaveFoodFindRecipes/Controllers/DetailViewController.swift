@@ -20,38 +20,50 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let apiController = ApiController()
     var details = {Details.self}
     var id: String = ""
-    //var image = URL()
     var images = [Images]()
-    //var temp = {Images}
     var name: String = ""
     var ingredientLines = [String]()
     
     var email: String = ""
+    var hideSaveButton: Bool = false
+    var points = [Points]()
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if hideSaveButton == true {
+            saveButton.isEnabled = false
+            saveButton.tintColor = UIColor.clear
+        }
         tableView.dataSource = self
         tableView.delegate = self
-        print("1")
+        
+        ref3.queryOrdered(byChild: "points").observe(.value, with: { snapshot in
+            print(snapshot.children)
+            var oldPoints = [Points]()
+            for item in snapshot.children {
+                print(item)
+                let user = Points(snapshot: item as! DataSnapshot)
+                oldPoints.append(user)
+                print(oldPoints)
+            }
+            self.points = oldPoints
+        })
+        
         ApiController.shared.detailsRecipe(id:id) { (details) in
             if let details = details {
-                print("2")
-                print(details)
                 self.name = details.name
                 self.ingredientLines = details.ingredientLines
-                print(self.ingredientLines)
                 DispatchQueue.main.async {
                     self.titleLabel.text = self.name
                     self.tableView.separatorStyle = .none
                     self.tableView.reloadData()
                 }
                 self.images = details.images
-                //image = self.images[0].hostedLargeUrl
-                print(self.images)
                 ApiController.shared.recipeImage(url: self.images[0].hostedLargeUrl) { (image) in
                     guard let image = image  else {return}
                     DispatchQueue.main.async {
@@ -65,16 +77,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSaved" {
-            let SavedRecipesTableViewController = segue.destination as! SavedRecipesTableViewController
+            let savedRecipesTableViewController = segue.destination as! SavedRecipesTableViewController
             saveRecipe()
-            SavedRecipesTableViewController.email = email
-//            self.ref.child((Auth.auth().currentUser?.email)!).setValue(id)
-//            self.ref.child((Auth.auth().currentUser?.email)!).setValue(name)
-//            self.ref.child((Auth.auth().currentUser?.email)!).setValue(images[0].hostedLargeUrl)
-//            SavedRecipesTableViewController.recipeId = id
-//            SavedRecipesTableViewController.recipeName = name
-//            SavedRecipesTableViewController.recipeImages = images
-            //DetailViewController.image = recipeResults[index].smallImageUrls
+            savedRecipesTableViewController.email = email
         }
     }
     
@@ -87,9 +92,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(largeImage)
             
             let child = ref.child(email).child(id).setValue(["name": name, "image": largeImage])
-            //child.child(id).setValue(["name": name, "image": largeImage])
-//            ref.child(email).setValue(name)
-//            ref.child(email).setValue(largeImage)
         }
         
     }
@@ -141,9 +143,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         alertController.addAction(addAction)
         let homeAction = UIAlertAction(title: "Have It At Home", style: .destructive) { action in
-            let thing = "yo"
-            print(thing)
-            let child = self.ref3.child(self.userID).setValue(["points": 1])
+            self.points[0].score += 1
+            let child = self.ref3.child(self.userID).setValue(["points": self.points[0].score])
         }
         alertController.addAction(homeAction)
         

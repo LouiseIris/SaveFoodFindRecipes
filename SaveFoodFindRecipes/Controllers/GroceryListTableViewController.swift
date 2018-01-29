@@ -17,6 +17,8 @@ class GroceryListTableViewController: UITableViewController {
     //var items = [String:NSDictionary]()
     
     override func viewDidLoad() {
+        print("empty?")
+        print(groceryItems)
         super.viewDidLoad()
         print("blabla")
         ref2.child(userID).observe(.value, with: { snapshot in
@@ -27,6 +29,8 @@ class GroceryListTableViewController: UITableViewController {
                 print(item.key)
                 self.groceryItems.append(item.key)
             }
+            print("content?")
+            print(self.groceryItems)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

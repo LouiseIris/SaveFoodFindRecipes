@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView?.layer.cornerRadius = 9.0
+        imageView?.clipsToBounds = true
 //        DispatchQueue.main.async {
 //            self.imageView.image = image
 //        }

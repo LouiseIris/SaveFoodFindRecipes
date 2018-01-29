@@ -14,6 +14,9 @@
             <string>Helvetica</string>
             <string>Helvetica-Light</string>
         </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
         </array>
@@ -408,16 +411,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-ZE-n0w">
-                                <rect key="frame" x="164" y="469" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-ZE-n0w">
+                                <rect key="frame" x="130.5" y="538" width="113" height="30"/>
+                                <state key="normal" title="See leaderboard"/>
                                 <connections>
                                     <segue destination="qUo-ZF-bU7" kind="show" id="sQe-pg-OUy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! You've already saved 1 ingredient" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6n-v7-zi3">
+                                <rect key="frame" x="-38.5" y="164" width="453" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HNJ-ZE-n0w" firstAttribute="centerX" secondItem="vK4-VM-Gc3" secondAttribute="centerX" id="1mj-fd-7xx"/>
+                            <constraint firstItem="aUR-uE-aPq" firstAttribute="bottom" secondItem="HNJ-ZE-n0w" secondAttribute="bottom" constant="50" id="Ivz-QW-Ipf"/>
+                            <constraint firstItem="L6n-v7-zi3" firstAttribute="centerX" secondItem="vK4-VM-Gc3" secondAttribute="centerX" id="NAP-aj-qJM"/>
+                            <constraint firstItem="L6n-v7-zi3" firstAttribute="top" secondItem="aUR-uE-aPq" secondAttribute="top" constant="100" id="TW6-eP-Pku"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aUR-uE-aPq"/>
                     </view>
                     <navigationItem key="navigationItem" id="xBG-em-cim"/>
@@ -573,11 +587,14 @@
         <scene sceneID="cJv-WD-TTb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vUB-Rm-jpJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LF3-vM-uo4"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="LF3-vM-uo4">
+                        <color key="badgeColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BcX-A1-nW5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.71345236219999997" green="1" blue="0.54205428990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

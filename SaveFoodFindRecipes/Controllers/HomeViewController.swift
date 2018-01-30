@@ -11,11 +11,14 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var congratulations: UILabel!
     let ref3 = Database.database().reference().child("Points")
     let userID = Auth.auth().currentUser!.uid
+    var points = [Points]()
 
-    @IBOutlet weak var imageView: UIImageView!
     @IBAction func LogoutButtonTapped(_ sender: UIButton) {
+        // Logout user
         if Auth.auth().currentUser != nil {
             do {
                 try Auth.auth().signOut()
@@ -30,26 +33,26 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView?.layer.cornerRadius = 9.0
-        imageView?.clipsToBounds = true
+        logoutButton.layer.cornerRadius = 5
+        fetchPoints()
     }
     
-    
+    func fetchPoints() {
+        // Get user's points for saved ingredients from firebase
+        ref3.queryOrdered(byChild: "points").observe(.value, with: { snapshot in
+            var oldPoints = [Points]()
+            for item in snapshot.children {
+                let user = Points(snapshot: item as! DataSnapshot)
+                oldPoints.append(user)
+            }
+            self.points = oldPoints
+            self.congratulations.text = "Congratulations! You've saved \(self.points[0].score) ingredients so far, keep it up!"
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -23,7 +23,7 @@ class SavedRecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem
         
 //        dataRef.observeSingleEvent(of: .value, with: { snapshot in
 //            self.savedList = []
@@ -89,26 +89,27 @@ class SavedRecipesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCellIdentifier", for: indexPath) as? RecipeTableViewCell
 
         // Configure the cell...
-        configure(cell: cell, forItemAt: indexPath)
+        configure(cell: cell!, forItemAt: indexPath)
 
-        return cell
+        return cell!
     }
     
-    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        cell.textLabel?.text = recipeNames[indexPath.row]
+    func configure(cell: RecipeTableViewCell, forItemAt indexPath: IndexPath) {
+        cell.savedImageView?.image = #imageLiteral(resourceName: "Food")
+        cell.savedTextLabel?.text = recipeNames[indexPath.row]
         ApiController.shared.recipeImage(url:recipeImages[indexPath.row]) { (image) in
             guard let image = image else {return}
             DispatchQueue.main.async {
                 if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath != indexPath {
                     return
                 }
-                cell.imageView?.image = image
-                cell.imageView?.layer.cornerRadius = 9.0
-                cell.imageView?.clipsToBounds = true
-                self.tableView.reloadData()
+                cell.savedImageView?.image = image
+                cell.savedImageView?.layer.cornerRadius = 9.0
+                cell.savedImageView?.clipsToBounds = true
+//                self.tableView.reloadData()
             }
         }
     }

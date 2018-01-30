@@ -15,7 +15,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let ref2 = Database.database().reference().child("Grocery_list")
     let ref3 = Database.database().reference().child("Points")
     let userID = Auth.auth().currentUser!.uid
-    var counter = 0
     
     let apiController = ApiController()
     var details = {Details.self}
@@ -27,6 +26,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var email: String = ""
     var hideSaveButton: Bool = false
     var points = [Points]()
+    var counter = 0
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -35,6 +35,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        pleaseWait()
         if hideSaveButton == true {
             saveButton.isEnabled = false
             saveButton.tintColor = UIColor.clear
@@ -68,6 +69,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     guard let image = image  else {return}
                     DispatchQueue.main.async {
                         self.imageView.image = image
+//                        self.waitIsOver()
                     }
                 }
             }
@@ -81,6 +83,23 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             saveRecipe()
             savedRecipesTableViewController.email = email
         }
+    }
+    
+    // Source: https://stackoverflow.com/questions/27960556/loading-an-overlay-when-running-long-tasks-in-ios
+    func pleaseWait() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func waitIsOver() {
+        dismiss(animated: false, completion: nil)
     }
     
     func saveRecipe() {

@@ -12,51 +12,39 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController {
     
-    //var totalList = [String]()
-    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailLoginTextField: UITextField!
-    
     @IBOutlet weak var passwordLoginTextField: UITextField!
     
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
-        // source: https://appcoda.com/firebase-login-signup/
         
+        // Source: https://appcoda.com/firebase-login-signup/
         if self.emailLoginTextField.text == "" || self.passwordLoginTextField.text == "" {
             
-            //Alert to tell the user that there was an error because they didn't fill anything in the textfields
-            
+            // Alert with an error because the user didn't fill in the textfields
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
-            
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
-            
             self.present(alertController, animated: true, completion: nil)
             
         } else {
             
-            // sign in
+            // Sign in
             Auth.auth().signIn(withEmail: self.emailLoginTextField.text!, password: self.passwordLoginTextField.text!) { (user, error) in
                 
                 if error == nil {
                     
-                    //Print into the console if successfully logged in
-                    print("You have successfully logged in")
-                    
-                    //Go to the StartViewController if the login is sucessful
+                    // Go to the HomeViewController if the login is sucessful
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarC")
                     self.present(vc!, animated: true, completion: nil)
                     
                 } else {
                     
-                    // if sign in wasn't successfull print error to the console
-                    print("an error")
-                    
-                    //Tells the user that there is an error and then gets firebase to tell them the error
+                    // Tells the user that there is an error and firebase tells them the error
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
@@ -65,29 +53,23 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func RegisterButtonTapped(_ sender: UIButton) {
-        // source: https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2
         
-        let alert = UIAlertController(title: "Register",
-                                      message: "Register",
-                                      preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { action in
-                                        let emailField = alert.textFields![0]
-                                        let passwordField = alert.textFields![1]
+        // Source: https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2
+        let alert = UIAlertController(title: "Register", message: "Register", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+            let emailField = alert.textFields![0]
+            let passwordField = alert.textFields![1]
                                         
-                                        Auth.auth().createUser(withEmail: emailField.text!,
-                                                                   password: passwordField.text!) { user, error in
-                                                                    if error == nil {
-                                                                        Auth.auth().signIn(withEmail: self.emailLoginTextField.text!,
-                                                                                               password: self.passwordLoginTextField.text!)
-                                                                    }
-                                        }
+            // Create user
+            Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { user, error in
+                if error == nil {
+                    // Sign in
+                    Auth.auth().signIn(withEmail: self.emailLoginTextField.text!, password: self.passwordLoginTextField.text!)
+                }
+            }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alert.addTextField { textEmail in
             textEmail.placeholder = "Enter your email"
         }
@@ -99,13 +81,23 @@ class LogInViewController: UIViewController {
         
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonLayout()
+        observeAuthentication()
+    }
+    
+    func setButtonLayout() {
+        loginButton.layer.cornerRadius = 5
+        registerButton.layer.cornerRadius = 5
+    }
+    
+    func observeAuthentication() {
+        // Automatically signs in if user didn't logout last time
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.performSegue(withIdentifier: "toTabBarController", sender: nil)
@@ -113,19 +105,9 @@ class LogInViewController: UIViewController {
         }
     }
     
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toTabBarController" {
-//            let next = segue.destination as! SearchViewController
-//            next.totalList = totalList
-//        }
-//    }
-    
     
 }
 

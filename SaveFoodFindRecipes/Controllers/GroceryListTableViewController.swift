@@ -14,16 +14,21 @@ class GroceryListTableViewController: UITableViewController {
     let ref2 = Database.database().reference().child("Grocery_list")
     let userID = Auth.auth().currentUser!.uid
     var groceryItems = [String]()
-    //var item = Dictionary()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        fetchGroceries()
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    // Get user's grocery list from Firebase
+    func fetchGroceries() {
         ref2.child(userID).observe(.value, with: { snapshot in
             var tempList = [String]()
             let items = snapshot.value as? [String:NSDictionary]
             for item in items! {
-                print(item.key)
                 tempList.append(item.key)
             }
             self.groceryItems = tempList
@@ -31,43 +36,29 @@ class GroceryListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         })
-        print(groceryItems)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return groceryItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groceryCellIdentifier", for: indexPath)
-
-        // Configure the cell...
         configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
     
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        cell.textLabel?.text = groceryItems[indexPath.row]
+        cell.textLabel?.text = "- \(groceryItems[indexPath.row])"
     }
 
     /*
@@ -78,18 +69,13 @@ class GroceryListTableViewController: UITableViewController {
     }
     */
 
-    // Override to support editing the table view.
+    // Delete grocery item by swipe
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            //var item = groceryItems.[indexPath.row]
             self.ref2.child(self.userID).child(groceryItems[indexPath.row]).removeValue()
             groceryItems.remove(at: indexPath.row)
             tableView.reloadData()
         }
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
     }
 
     /*

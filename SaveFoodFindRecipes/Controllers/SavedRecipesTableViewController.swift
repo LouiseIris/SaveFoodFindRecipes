@@ -16,35 +16,23 @@ class SavedRecipesTableViewController: UITableViewController {
     var recipeNames = [String]()
     var recipeImages = [URL]()
     var email: String = ""
-    //var savedList = []
     
     let ref = Database.database().reference().child("Saved_recipes")
-    //var dataRef = Database.database().reference(email)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
-//        dataRef.observeSingleEvent(of: .value, with: { snapshot in
-//            self.savedList = []
-//            //let recipeName = snapshot.childSnapshot(forPath: "name").value
-//            for recipes in snapshot.children.allObjects as! [DataSnapshot] {
-//                let recipeID = events.value as? [String: AnyObject]
-//                let recipeName = eventObject?["name"]
-//                let recipeImage = eventObject?["image"]
-//            }
-//        })
-        
-        
         currentUser()
+        fetchSavedRecipes()
+    }
+    
+    // Get saved recipes from Firebase
+    func fetchSavedRecipes() {
         ref.child(email).observe(.value, with: { snapshot in
             var tempIdsList = [String]()
             var tempNamesList = [String]()
             var tempImagesList = [URL]()
-            print(snapshot.value)
             let favorites = snapshot.value as? [String:NSDictionary]
-            print(favorites)
-            
+            // For every recipe, store nid, name and image to lists
             for favorite in favorites! {
                 tempIdsList.append(favorite.key)
                 let name = favorite.value["name"]
@@ -73,33 +61,29 @@ class SavedRecipesTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return recipeNames.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCellIdentifier", for: indexPath) as? RecipeTableViewCell
-
-        // Configure the cell...
         configure(cell: cell!, forItemAt: indexPath)
 
         return cell!
     }
     
     func configure(cell: RecipeTableViewCell, forItemAt indexPath: IndexPath) {
+        // Set recipe name and default image
         cell.savedImageView?.image = #imageLiteral(resourceName: "Food")
         cell.savedTextLabel?.text = recipeNames[indexPath.row]
+        
+        // Get image from API
         ApiController.shared.recipeImage(url:recipeImages[indexPath.row]) { (image) in
             guard let image = image else {return}
             DispatchQueue.main.async {
@@ -109,10 +93,11 @@ class SavedRecipesTableViewController: UITableViewController {
                 cell.savedImageView?.image = image
                 cell.savedImageView?.layer.cornerRadius = 9.0
                 cell.savedImageView?.clipsToBounds = true
-//                self.tableView.reloadData()
             }
         }
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

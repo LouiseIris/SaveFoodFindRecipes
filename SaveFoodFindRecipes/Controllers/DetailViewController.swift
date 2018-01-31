@@ -35,14 +35,24 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
 //        pleaseWait()
+        
+        // Hide save button if recipe already saved
         if hideSaveButton == true {
             saveButton.isEnabled = false
             saveButton.tintColor = UIColor.clear
         }
-        tableView.dataSource = self
-        tableView.delegate = self
         
+        fetchPoints()
+        fetchDetails()
+
+    }
+    
+    // Get points from user's Firebase
+    func fetchPoints() {
         ref3.queryOrdered(byChild: "points").observe(.value, with: { snapshot in
             print(snapshot.children)
             var oldPoints = [Points]()
@@ -54,7 +64,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             self.points = oldPoints
         })
-        
+    }
+    
+    // Get recipe details from Yummly API
+    func fetchDetails() {
         ApiController.shared.detailsRecipe(id:id) { (details) in
             if let details = details {
                 self.name = details.name
@@ -65,23 +78,19 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadData()
                 }
                 self.images = details.images
-                ApiController.shared.recipeImage(url: self.images[0].hostedLargeUrl) { (image) in
-                    guard let image = image  else {return}
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-//                        self.waitIsOver()
-                    }
-                }
+                self.fetchImage()
             }
         }
-
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSaved" {
-            let savedRecipesTableViewController = segue.destination as! SavedRecipesTableViewController
-            saveRecipe()
-            savedRecipesTableViewController.email = email
+    // Get large image from Yummly API
+    func fetchImage() {
+        ApiController.shared.recipeImage(url: self.images[0].hostedLargeUrl) { (image) in
+            guard let image = image  else {return}
+            DispatchQueue.main.async {
+                self.imageView.image = image
+                //                        self.waitIsOver()
+            }
         }
     }
     
@@ -102,6 +111,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dismiss(animated: false, completion: nil)
     }
     
+    // TODOOOOO!!!!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSaved" {
+            let savedRecipesTableViewController = segue.destination as! SavedRecipesTableViewController
+            saveRecipe()
+            savedRecipesTableViewController.email = email
+        }
+    }
+    // TODOOOO!!!!
     func saveRecipe() {
         var userEmail = (Auth.auth().currentUser?.email)!
         if let shortenedUser = userEmail.range(of: "@")?.lowerBound {
@@ -112,35 +130,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let child = ref.child(email).child(id).setValue(["name": name, "image": largeImage])
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientsCellIdentifier", for: indexPath)
         configure(cell: cell, forItemAt: indexPath)
-        
         return cell
     }
     
+    // Set ingredient lines in table view
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        
         cell.textLabel?.text = ingredientLines[indexPath.row]
     }
     
@@ -148,20 +151,23 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return ingredientLines.count
     }
     
+    // Alert with options to add the ingredient to the grocery list, get a point or cancel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //code to execute on click
         let alertController = UIAlertController(title: "Ingredient", message: ingredientLines[indexPath.row], preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
+        
         let addAction = UIAlertAction(title: "Add To Grocery List", style: .destructive) { action in
             let item = self.ingredientLines[indexPath.row]
-            print(item)
+            // Save ingredient to grocery list on Firebase
             let child = self.ref2.child(self.userID).child(item).setValue(["item\(self.counter)": item])
             self.counter += 1
         }
         alertController.addAction(addAction)
+        
         let homeAction = UIAlertAction(title: "Have It At Home", style: .destructive) { action in
+            // Add a point and change it in Firebase
             self.points[0].score += 1
             let child = self.ref3.child(self.userID).setValue(["points": self.points[0].score])
         }
@@ -169,4 +175,5 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
 }

@@ -18,16 +18,18 @@ class SavedRecipesTableViewController: UITableViewController {
     var email: String = ""
     
     let ref = Database.database().reference().child("Saved_recipes")
+    let userID = Auth.auth().currentUser!.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser()
         fetchSavedRecipes()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // Get saved recipes from Firebase
     func fetchSavedRecipes() {
-        ref.child(email).observe(.value, with: { snapshot in
+        ref.child(userID).observe(.value, with: { snapshot in
             var tempIdsList = [String]()
             var tempNamesList = [String]()
             var tempImagesList = [URL]()
@@ -97,17 +99,6 @@ class SavedRecipesTableViewController: UITableViewController {
         }
     }
     
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-    
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -128,33 +119,7 @@ class SavedRecipesTableViewController: UITableViewController {
             let index = tableView.indexPathForSelectedRow!.row
             detailViewController.id = recipeIds[index]
             detailViewController.hideSaveButton = true
-            //DetailViewController.image = recipeResults[index].smallImageUrls
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

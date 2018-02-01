@@ -87,8 +87,11 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("before")
         setButtonLayout()
+        print("Between")
         observeAuthentication()
+        print("after")
     }
     
     func setButtonLayout() {

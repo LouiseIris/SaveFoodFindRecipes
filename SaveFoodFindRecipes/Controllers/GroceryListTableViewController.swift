@@ -18,9 +18,7 @@ class GroceryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchGroceries()
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // Get user's grocery list from Firebase

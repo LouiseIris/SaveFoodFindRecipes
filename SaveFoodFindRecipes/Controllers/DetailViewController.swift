@@ -22,33 +22,42 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var images = [Images]()
     var name: String = ""
     var ingredientLines = [String]()
+    var link: String = ""
     
     var email: String = ""
     var hideSaveButton: Bool = false
     var points = [Points]()
-    var counter = 0
 
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBAction func WebLink(_ sender: Any) {
+        if let url = NSURL(string: link) {
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveRecipe()
+        let alertController = UIAlertController(title: nil, message: "Recipe has been added to favorites", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        fetchPoints()
+        fetchDetails()
         
-//        pleaseWait()
-        
-        // Hide save button if recipe already saved
+        // Hide save button if showing details of saved recipe
         if hideSaveButton == true {
             saveButton.isEnabled = false
             saveButton.tintColor = UIColor.clear
         }
-        
-        fetchPoints()
-        fetchDetails()
-
     }
     
     // Get points from user's Firebase
@@ -72,6 +81,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let details = details {
                 self.name = details.name
                 self.ingredientLines = details.ingredientLines
+                self.link = details.source.sourceRecipeUrl
                 DispatchQueue.main.async {
                     self.titleLabel.text = self.name
                     self.tableView.separatorStyle = .none
@@ -89,47 +99,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard let image = image  else {return}
             DispatchQueue.main.async {
                 self.imageView.image = image
-                //                        self.waitIsOver()
             }
         }
     }
     
-    // Source: https://stackoverflow.com/questions/27960556/loading-an-overlay-when-running-long-tasks-in-ios
-    func pleaseWait() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func waitIsOver() {
-        dismiss(animated: false, completion: nil)
-    }
-    
-    // TODOOOOO!!!!
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSaved" {
-            let savedRecipesTableViewController = segue.destination as! SavedRecipesTableViewController
-            saveRecipe()
-            savedRecipesTableViewController.email = email
-        }
-    }
-    // TODOOOO!!!!
+    // Save recipe to Firebase
     func saveRecipe() {
-        var userEmail = (Auth.auth().currentUser?.email)!
-        if let shortenedUser = userEmail.range(of: "@")?.lowerBound {
-            let substring = userEmail[..<shortenedUser]
-            email = String(substring)
-            let largeImage = String(describing: images[0].hostedLargeUrl)
-            print(largeImage)
-            
-            let child = ref.child(email).child(id).setValue(["name": name, "image": largeImage])
-        }
+        let largeImage = String(describing: images[0].hostedLargeUrl)
+        let child = ref.child(userID).child(id).setValue(["name": name, "image": largeImage])
     }
 
     override func didReceiveMemoryWarning() {
@@ -161,8 +138,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let addAction = UIAlertAction(title: "Add To Grocery List", style: .destructive) { action in
             let item = self.ingredientLines[indexPath.row]
             // Save ingredient to grocery list on Firebase
-            let child = self.ref2.child(self.userID).child(item).setValue(["item\(self.counter)": item])
-            self.counter += 1
+            let child = self.ref2.child(self.userID).child(item).setValue(["item": item])
         }
         alertController.addAction(addAction)
         

@@ -19,7 +19,7 @@ struct Images: Codable {
 }
 
 struct Source: Codable {
-    var sourceRecipeUrl: URL
+    var sourceRecipeUrl: String
 }
 
 struct Details: Codable {

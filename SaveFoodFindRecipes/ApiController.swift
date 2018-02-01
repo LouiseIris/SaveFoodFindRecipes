@@ -13,17 +13,6 @@ class ApiController {
     
     static let shared = ApiController()
     
-    var id: String = ""
-    
-    var ingredient: String = ""
-    
-//    let searchViewController = SearchViewController()
-//    var ingredient1 = String()
-//    
-//    SearchViewController.share.ingredientSearch { (ingredient1) in
-//        let ingredient1 = ingredient1
-//    }
-    
     func ingredientsList(completion: @escaping ([Ingredient]?) -> Void) {
         let url = URL(string: "http://api.yummly.com/v1/api/metadata/ingredient?_app_id=6dc18156&_app_key=4ba69a9ccd8406d31f15f48886c69b0e")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in

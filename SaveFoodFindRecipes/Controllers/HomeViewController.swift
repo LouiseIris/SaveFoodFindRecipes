@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
                 oldPoints.append(user)
             }
             self.points = oldPoints
-            self.congratulations.text = "Congratulations! You've saved \(self.points[0].score) ingredients so far, keep it up!"
+            self.congratulations.text = "You've saved \(self.points[0].score) ingredients so far! Keep up the good work and stop food waste by using the ingredients you have at home!"
         })
     }
 

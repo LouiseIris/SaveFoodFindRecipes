@@ -34,13 +34,26 @@ class SearchViewController: UIViewController {
                 for ingredient in ingredients {
                     self.totalList.append(ingredient.searchValue)
                 }
-                // Use ingredient list for dropdown menu in search text fields
-                self.ingredientTextField.filterStrings(self.totalList)
-                self.ingredientTextField2.filterStrings(self.totalList)
-                self.ingredientTextField3.filterStrings(self.totalList)
+                self.setTextFields()
             }
-            
         }
+    }
+    
+    func setTextFields() {
+        // Use ingredient list for dropdown menu in search text fields
+        self.ingredientTextField.filterStrings(self.totalList)
+        self.ingredientTextField2.filterStrings(self.totalList)
+        self.ingredientTextField3.filterStrings(self.totalList)
+        self.ingredientTextField.maxResultsListHeight = 150
+        self.ingredientTextField2.maxResultsListHeight = 150
+        self.ingredientTextField3.maxResultsListHeight = 150
+        self.ingredientTextField.maxNumberOfResults = 5
+        self.ingredientTextField2.maxNumberOfResults = 5
+        self.ingredientTextField3.maxNumberOfResults = 5
+        self.ingredientTextField.minCharactersNumberToStartFiltering = 2
+        self.ingredientTextField2.minCharactersNumberToStartFiltering = 2
+        self.ingredientTextField3.minCharactersNumberToStartFiltering = 2
+        print("test")
     }
 
     override func didReceiveMemoryWarning() {

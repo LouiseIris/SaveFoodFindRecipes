@@ -25,4 +25,7 @@ Mapjes voor models en controllers zodat het overzichtelijker is. Ik heb een tabl
 # Dag 9  
 op meerdere ingrediënten zoeken, pop up in detailview controller, ingredient toevoegen aan grocery list, grocery list weergeven in tableviewcontroller  
   
-
+# Dag 10  
+De puntentelling werkt nu en je kan nu bewaarde recepten en ingrediënten op je boodschappenlijstje verwijderen.  
+  
+# Dag 11  

@@ -23,6 +23,16 @@ Het uitlezen van de data is gelukt. De layout heb ik aangepast zodat het results
 Mapjes voor models en controllers zodat het overzichtelijker is. Ik heb een table view voor ingredienten in de detail viewcontroller gemaakt.  
   
 # Dag 9  
-op meerdere ingrediënten zoeken, pop up in detailview controller, ingredient toevoegen aan grocery list, grocery list weergeven in tableviewcontroller  
+Op meerdere ingrediënten zoeken, pop up in detailview controller, ingredient toevoegen aan grocery list, grocery list weergeven in tableviewcontroller  
   
-
+# Dag 10  
+De puntentelling werkt nu en je kan nu bewaarde recepten en ingrediënten op je boodschappenlijstje verwijderen.  
+  
+# Dag 11  
+Ander kleurtje en lettertype, custom cellen zodat scrollen werkt, laad scherm is nog niet optimaal.  
+  
+# Dag 12  
+Comments en functies zodat de code netter is.  
+  
+# Dag 13  
+Search text fields gecustomized, onnodige code eruit. Nare foutmelding die moeilijk oplosbaar was.  

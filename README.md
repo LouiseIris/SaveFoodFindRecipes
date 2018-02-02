@@ -7,6 +7,7 @@ This recipes app will let the user search for recipes with the ingredients the u
    
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture1.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture2.png width="400">  
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture3.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture5.png width="400">  
+Link to a short film with an explaination of the app: https://youtu.be/H9uc0-WR3Yg  
   
 ### Main features  
 * Create user account  

@@ -9,20 +9,17 @@ The app is meant for people who can't think of a recipe for their ingredients an
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture1.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture2.png width="400">  
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture3.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture5.png width="400">  
   
-## Main features  
+### Main features  
 * Create user account  
 * Search with multiple ingredients 
 * Save recipe  
-* Add ingredient to grocerylist  
-* get points for ingredients that are not spilled
+* Add ingredient to grocery list  
+* Get points for ingredients that are not wasted
   
-## Datasources  
-Yummly: https://developer.yummly.com/documentation  
+### Datasources  
+Yummly: https://developer.yummly.com/documentation    
   
-#### External components:  
-Firebase  
-  
-## Copyrights  
+### Copyrights  
 Copyrights belongs to the author: Iris Schlundt Bodien  
   
 For the search text fields I used: https://github.com/apasccon/SearchTextField  
@@ -36,5 +33,5 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.  
   
-## License  
+### License  
 SaveFoodFindRecipes is available under the MIT license. See the LICENSE file for more info.

@@ -1,11 +1,10 @@
 # Save Food, Find Recipes
-
-This recipes app will let the user search for recipes with the ingredients the user has at home.  
-   
 Some people have leftover ingredients at home and often it will be spoiled, because they don't know what to do with it.
 To tackle the problem of food waste, this app will help people to use the leftover ingredients.  
 The app is meant for people who can't think of a recipe for their ingredients and who want to be environmantally conscious.  
-    
+  
+This recipes app will let the user search for recipes with the ingredients the user has at home.  
+   
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture1.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture2.png width="400">  
 <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture3.png width="400"> <img src=https://github.com/LouiseIris/SaveFoodFindRecipes/blob/master/docs/picture5.png width="400">  
   
@@ -23,7 +22,7 @@ Yummly: https://developer.yummly.com/documentation
 Copyrights belongs to the author: Iris Schlundt Bodien  
   
 For the search text fields I used: https://github.com/apasccon/SearchTextField  
-Copyright (c) 2016 Alejandro Pasccon <apasccon@gmail.com>
+Copyright (c) 2016 Alejandro Pasccon <apasccon@gmail.com>  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
